@@ -9,8 +9,10 @@ def modifyConfig(pipeline_config_path, step):
 
 def getTrainScript(train_dir, pipeline_config_path):
     script = open('./object_detection/legacy/train.py').read()
-    script = script.replace("flags.DEFINE_string('train_dir', ''", "flags.DEFINE_string('train_dir', '{}'" .format(train_dir))
-    script = script.replace("flags.DEFINE_string('pipeline_config_path', ''", "flags.DEFINE_string('pipeline_config_path', '{}'" .format(pipeline_config_path))
+    script = script.replace("flags.DEFINE_string('train_dir', ''",
+                            "flags.DEFINE_string('train_dir', '{}'" .format(train_dir))
+    script = script.replace("flags.DEFINE_string('pipeline_config_path', ''",
+                            "flags.DEFINE_string('pipeline_config_path', '{}'" .format(pipeline_config_path))
 
     return script
 
@@ -22,9 +24,12 @@ def getExportScript(pipeline_config_path, step, base_save_path):
     
     script = open('./object_detection/export_inference_graph.py').read()
     
-    script = script.replace("flags.DEFINE_string('pipeline_config_path', None", "flags.DEFINE_string('pipeline_config_path', '{}'" .format(pipeline_config_path))
-    script = script.replace("flags.DEFINE_string('trained_checkpoint_prefix', None", "flags.DEFINE_string('trained_checkpoint_prefix', '{}'" .format(trained_checkpoint_prefix))
-    script = script.replace("flags.DEFINE_string('output_directory', None", "flags.DEFINE_string('output_directory', '{}'" .format(output_directory))
+    script = script.replace("flags.DEFINE_string('pipeline_config_path', None",
+                            "flags.DEFINE_string('pipeline_config_path', '{}'" .format(pipeline_config_path))
+    script = script.replace("flags.DEFINE_string('trained_checkpoint_prefix', None",
+                            "flags.DEFINE_string('trained_checkpoint_prefix', '{}'" .format(trained_checkpoint_prefix))
+    script = script.replace("flags.DEFINE_string('output_directory', None",
+                            "flags.DEFINE_string('output_directory', '{}'" .format(output_directory))
     
     return script
 
